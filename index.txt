@@ -19,6 +19,14 @@
     <!--javascriptの読み込み-->
     <script type="text/javascript" src="js/usr.js"></script>
     <script type="text/javascript">(function(){alert("a");})()</script>
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+    <!--<script src="js/jquery-1.10.1.min.js"></script><!--利用するjQeryのリンク-->
+    <script src="js/jquery.balloon.js"></script><!--バルーン表示ライブラリ-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.1.5/ZeroClipboard.min.js"></script><!--クリップボードコピーのライブラリ-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.js"></script>
+
     <footer><!--フッター--></footer>
  
   </body>
