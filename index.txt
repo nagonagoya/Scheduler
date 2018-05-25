@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+
+    <!--headタグの中でスタイル等のページ設定をする-->
+    <meta charset="utf-8"> 
+    <title>タイトル</title>
+    <!--スタイル:cssの読み込み-->
+    <link type="text/css" rel="stylesheet" href="scc/***.css"/>
+    <style><!--ページ毎のスタイルの設定--></style>
+
+  </head>
+  <body>
+
+    <header>
+        <div id=title></div>
+    </header>
+    <!--本文-->
+    <!--javascriptの読み込み-->
+    <script type="text/javascript" src="js/usr.js"></script>
+    <script type="text/javascript">(function(){alert("a");})()</script>
+    <footer><!--フッター--></footer>
+ 
+  </body>
+</html>
