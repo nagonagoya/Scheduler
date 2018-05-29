@@ -120,16 +120,9 @@ td.fA3:hover {
 }
 
 
-/*テーブル：マーク（日程決定日以外）*/
+/*テーブル：マーク（日程決定日以外　自分以外）*/
 td.fB0 {/*×*/
 	background: #ff8989;
-	font-weight: bold;
-	color: #ffffff;
-}
-td.fB0:hover {
-	cursor:pointer;
-	background: #ef7979;
-	border: 1px solid #6bf;
 	font-weight: bold;
 	color: #ffffff;
 }
@@ -138,29 +131,64 @@ td.fB1 {/*△*/
 	font-weight: bold;
 	color: #ffffff;
 }
-td.fB1:hover {
-	cursor:pointer;
-	background: #efc166;
-	border: 1px solid #6bf;
-	font-weight: bold;
-	color: #ffffff;
-}
 td.fB2 {/*〇*/
 	background: #95daef;
-	font-weight: bold;
-	color: #ffffff;
-}
-td.fB2:hover {
-	cursor:pointer;
-	background: #85cadf;
-	border: 1px solid #6bf;
 	font-weight: bold;
 	color: #ffffff;
 }
 td.fB3 {/*空白（未設定）*/
 	background: #f0f0f0;
 }
-td.fB3:hover {
+
+
+
+
+
+/*テーブル：マーク（日程決定日以外 自分）*/
+td.fC0 {/*×*/
+	background: #ff8989;
+	border: 1px solid #df6969;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.fC0:hover {
+	cursor:pointer;
+	background: #ef7979;
+	border: 1px solid #6bf;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.fC1 {/*△*/
+	background: #ffd176;
+	border: 1px solid #dfb156;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.fC1:hover {
+	cursor:pointer;
+	background: #efc166;
+	border: 1px solid #6bf;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.fC2 {/*〇*/
+	background: #95daef;
+	border: 1px solid #75bacf;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.fC2:hover {
+	cursor:pointer;
+	background: #85cadf;
+	border: 1px solid #6bf;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.fC3 {/*空白（未設定）*/
+	background: #f0f0f0;
+	border: 1px solid #d0d0d0;
+}
+td.fC3:hover {
 	cursor:pointer;
 	background: #e0e0e0;
 	border: 1px solid #6bf;
@@ -172,43 +200,51 @@ td.fB3:hover {
 
 
 
+/*テーブル：ランキング*/
+td.r0 {/*落選*/
+	background: #ffffff;
+	font-weight: bold;
+	color: #ddd;
+}
+td.r1 {/*１位*/
+	background: #ff8989;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.r2 {/*２位*/
+	background: #ffb9b9;
+	font-weight: bold;
+	color: #ffffff;
+}
+td.r3 {/*３位*/
+	background: #ffe9e9;
+	font-weight: bold;
+	color: #ffffff;
+}
 
-/*テーブル：直前月連休者*/
-td.fC0 {/*連休なし*/
-	background: #d8d8d8;
-}
-td.fC0:hover {
-	cursor:pointer;
-	background: #c8c8c8;
-	border: 1px solid #6bf;
-}
-td.fC1 {/*連休あり*/
-	background: #7ae;
-}
-td.fC1:hover {
-	cursor:pointer;
-	background: #69d;
-	border: 1px solid #6bf;
-}
 
-/*従業員名：通常従業員*/
-td.person_normal {
+
+
+/*登録ボタン*/
+td.btn_entry {
 	background: #ddd;
 }
-td.person_normal:hover {
+td.btn_entry:hover {
 	cursor:pointer;
 	background: #ccc;
 	border: 1px solid #6bf;
 }
 
-/*従業員名：リーダー*/
-td.person_leader {
-	background: #aaa;
+
+
+/*招待者名：通常招待者*/
+td.person_other {
+	background: #ddd;
 }
-td.person_leader:hover {
-	cursor:pointer;
-	background: #999;
-	border: 1px solid #6bf;
+
+/*招待者名：自分*/
+td.person_me {
+	background: #55b9e8;
 }
 
 /*日付＆曜日欄*/
