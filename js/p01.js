@@ -44,6 +44,20 @@ function mc_marks(p, d){	//mc : Make Class の略
 	}
 }
 
+//■指定したd番目の日付のランキングをランキングに応じたクラス名を返す
+function mc_rank(d){
+	switch(d){
+		case ranking[0]:
+			return "r1";
+		case ranking[1]:
+			return "r2";
+		case ranking[2]:
+			return "r3";
+		default:
+			return "r0";
+	}
+}
+
 //■指定配列の自分（person_no）の列の並びを最後尾に移動する
 function change_array_column(x){
 	let buf = x.slice(person_no, person_no + 1);
@@ -75,9 +89,51 @@ function copyArray(arr){
   return newarr;
 }
 
+//■mark_ptのランキングの設定
+function set_ranking(){
+
+	var index = [];					//mark_ptのインデックス
+	var point_of_marks = [-1,1,2,0];//marksの値と連動したポイント
+	//ポイントが高いほど招待者の参加率が高い：×(0)→−１、△(1)→１、○(2)→2、未選択(3)→0
+
+	//p[日付]を集計
+	for(let d = 0; d < days.length; d++){
+		mark_pt[d] = 0;
+		index[d] = d;
+		for(let p = 0; p < persn.length; p++){
+			mark_pt[d] += point_of_marks[marks[p][d]];
+		}
+	}
+
+	//pointインデックindexのみをpoint値で降順ソート
+	function bcmp(v1, v2) {
+		return mark_pt[v2] - mark_pt[v1];
+	}
+	index.sort(bcmp);
+
+	console.log("ranking : "+index);
+	//console.log("point : "+point);
+	return index;
+}
+
+//■ランキングの表示
+function disp_ranking(){
+	for(let d = 0; d < days.length; d++){
+		var str = '#rank' + (100 + d);
+		console.log("disp_ranking : " + str);
+		$(str).attr('class',mc_rank(d)).text((ranking.indexOf(d)+1));
+	}
+}
+
+
 //■■■■■クラス・関数群・END■■■■■■■■■■■■■■■■■■■■■
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	var mark_pt = [];	//marksの値と連動したおすすめ度ポイント
+	var ranking = [];	//決定する日付のおすすめランキング
+	ranking = set_ranking();		//ランキングの初期値設定
+	//console.log("ranking : "+ranking);
 
 
 	//■指定配列の自分（person_no）の列の並びを最後尾に移動する
@@ -90,7 +146,7 @@ function copyArray(arr){
 
 	//テーブルのヘッダー作成
 	//ランキング
-	var str_head ="<td class=\"youbiD\"></td>";
+	var str_head ="<td class=\"r0\"></td>";
 	//開始月
 	str_head +="<td colspan=\"2\" class=\"youbiD\">"+month+"月</td>";
 	//招待者名
@@ -106,7 +162,7 @@ function copyArray(arr){
 	for(let d = 0; d < days.length; d++){
 		str_body +="<tr>";
 		//ランキング
-		str_body +="<td class=\"youbiD\"></td>";
+		str_body +="<td  id=\"rank"+(100+d)+"\" class=\""+mc_rank(d)+"\">"+(ranking.indexOf(d)+1)+"</td>";
 		//日付
 		str_body +="<td class=\""+mc_dayweek(d)+"\">"+days[d]       +"</td>";
 		//曜日
@@ -125,7 +181,7 @@ function copyArray(arr){
 
 	//テーブルのフッタの作成
 	//ランキング
-	var str_foot ="<td class=\"youbiD\"></td>";
+	var str_foot ="<td class=\"r0\"></td>";
 	//登録ボタン
 	str_foot +="<td id=\"save\" colspan=\""+(persn.length+3)+"\" class=\"btn_entry\">登　　録</td>";
 	$("#table2").append(str_foot);
@@ -243,13 +299,14 @@ function copyArray(arr){
 						",  class: "+$(this).attr("class")+" → "+str);
 			marks[p][d] = (marks[p][d]+1)%4;					// マークの値を＋１進めた値に更新
 			$(this).attr('class', str).text(mark[marks[p][d]]);	// マークのClassと記号を更新
-			//●まだ機能追加が必要：ランキングをチェックし表示する
-			//chk_rule_day(id);
+			//■ランキングをチェックし表示する
+			ranking = set_ranking();
+			disp_ranking();
 		});
 
 
 
-		//■データ保存ボタンの処理
+		//■登録ボタンの処理
 		$('#save').click(function() {
 			console.log("#saveD：pressed");
 			//当該ファイルがサーバに存在しているか確認する。
