@@ -11,7 +11,7 @@
 
 
 
-<!--■■■my_body(container) BEGIN■■■-->
+<!--■■■my_body(container) BEGIN■■■あああ-->
 	<div id="my_body">
 
 
@@ -24,31 +24,6 @@
 
 
 <!--■■■nav BEGIN■■■-->
-	<div id="my_nav">
-		<div id="mynav">
-			<ul>
-				<li class="btn"><button class="s" onclick="location.href='?ym=<?php echo h($prev); ?>'">&laquo; 前</button><button class="s" onclick="location.href='?ym=<?php echo h($next); ?>'">次 &raquo;</button></li>
-				<li class="btn"><button id="autoplan" class="m">自動プラン</button></li>
-				<li class="btn"><button id="clear" class="m">当月クリア</button></li>
-				<li class="btn"><button id="rule" class="m">ルール変更</button></li>
-				<li class="btn"><button id="csvcopy" class="m" data-clipboard-text="copy失敗">ＣＳＶ出力</button></li>
-				<li class="btn"><button id="deleteD" class="m">ファイル削除</button></li>
-				<l class="btn"i><button id="saveD"   class="m">ファイル保存</button></li>
-			</ul>
-			<p  class="small">
-							<br><br>
-				　当月ファイル ： <span id="file_exist_now" class="small-border"></span><br><br>
-				　前月ファイル ： <span id="file_exist_prev" class="small-border"></span><br><br>
-				　<a class="small-border" target="_blank" href="http://www.himekuricalendar.com/month<?php echo str_replace("-","_",date("Y-m")); ?>">本日</a>
-				<span>  <?php echo date("Y-m-d"); ?></span>
-			</p>
-
-<!--
-					<div id="test02">非ずボタン</div>
-			<div id="test03">非ずボタン</div>
--->
-				</div><!--/mynav-->
-	</div><!--/my_nav-->
 <!--■■■nav END   ■■■-->
 
 
@@ -100,48 +75,13 @@
 
 
 <script>
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//常識設定
 	var week = new Array("日","月","火","水","木","金","土");
 
 	//初期設定
-	var person = JSON.parse('<?=json_encode($person);?>');		//従業員名
-	var ym =JSON.parse('<?=json_encode($ym);?>');							//注目年月度←JSONで渡さないと引き算される
-	var longworkMax =<?php echo $longworkMax; ?>;							//最長連続出勤…※許容範囲：あり：上限
-	var longworkMax_safe =<?php echo $longworkMax_safe; ?>;		//最長連続出勤…※許容範囲：あり：注意
-	var longworkMin =<?php echo $longworkMin; ?>;							//最短連続出勤
-	var longwork = JSON.parse('<?=json_encode($longwork);?>');//連続出勤理想順位
-	var Qsha = <?php echo $Qsha; ?>;													//同日の休日者数上限…※許容範囲：あり：上限
-	var Qsha_safe = <?php echo $Qsha_safe; ?>;								//同日の休日者数上限…※許容範囲：あり：注意
-	var Qsu = <?php echo $Qsu; ?>;														//休日日数…※許容範囲なし
-	var Qsat = <?php echo $Qsat; ?>;													//土曜休日…※許容範囲なし
-	var Qsun = <?php echo $Qsun; ?>;													//日曜休日…※許容範囲なし
-	var Qren = <?php echo $Qren; ?>;													//連休回数…※許容範囲なし
-	var QrenQ = JSON.parse('<?=json_encode($QrenQ);?>');			//従業員毎の前月の連休回数
-	var Qss = <?php echo $Qss; ?>;														//金土以外…※許容範囲なし
-	var Qmon = <?php echo $Qmon; ?>;													//月曜休日…※許容範囲なし
-	var leader = JSON.parse('<?=json_encode($leader);?>');		//リーダーフラグ（１：リーダー）
-	var Qld = <?php echo $Qld; ?>;														//リダ全休…※許容範囲：あり：上限　※月曜以外
-//	console.log("leader:"+leader+"   Qld:"+Qld);//リーダー情報の表示
-
-	var flag = JSON.parse('<?=json_encode($flag);?>');									//従業員毎の前月の連休回数
-	flag["pre//v_lastweek"]=false;				//直前のday[][]がルール06最長連勤に抵触していないかのフラグ：抵触していたらfalse
-	//↑値は後で設定するので今はどちらでもいいけど一応宣言しとく
-	flag["prev_day_pressed"]=false;	//前月のday[][]との整合性判断フラグ：一度でも直前シフトday[*][0~longworkMax]か前月連勤QrenQ[]を触ったらtrueにする
-	//console.log("flag [prev]:"+flag["file_prev"]+", [now]:"+flag["file_now"]+", [match]:"+flag["file_match"]);
-
-	//とりあえず設定
-	var dpm = <?php echo $dpm; ?>;//日数/今月
-	var lastdpm = <?php echo $lastdpm; ?>;//日数/先月
-	var week21 = <?php echo $week21; ?>;//先月の21日の曜日
-	var daylengthx = person.length+2;//[人数+日+曜日]
-	var daylengthy = lastdpm+longworkMax+1;//[先月の日数+最長連勤+1]
-	var day = JSON.parse('<?=json_encode($day);?>');//JSON形式でphpの配列をjavascriptに渡す
-//	console.log(day);//うまくダミーのday[][]ができたか確認
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	var pass_id		= <?php echo $pass_id; ?>;  				//幹事ＩＤ
 	var thread_no	= <?php echo $thread_no; ?>;  				//スレッド番号
 	var person_no	= <?php echo $person_no; ?>;  				//自分の招待者番号
 	var title		= "<?php echo $title; ?>";					//スレッドのタイトル
@@ -156,6 +96,7 @@
 	var notes		= JSON.parse('<?=json_encode($notes );?>');	//招待者が日付に付けたコメント
 	var mark		= ["×", "△", "〇","　"];					//マークの記号
 
+	console.log("psaa_id	: "+pass_id	);
 	console.log("thread_no	: "+thread_no);
 	console.log("person_no	: "+person_no);
 	console.log("title		: "+title	);
@@ -169,9 +110,10 @@
 	console.log("marks		: "+marks	);
 	console.log("notes		: "+notes	);
 	console.log("mark		: "+mark	);
+
+	var flag_text_error = false		//コメント入力に問題があった場合：true、問題ない場合：false
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 </script>
 
 <script src="js/p01.js"></script><!--自作JS-->
