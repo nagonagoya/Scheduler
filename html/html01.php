@@ -11,7 +11,7 @@
 
 
 
-<!--■■■my_body(container) BEGIN■■■あああ-->
+<!--■■■my_body(container) BEGIN■■■-->
 	<div id="my_body">
 
 
@@ -45,7 +45,10 @@
 		<br>
 		<p><button id="togglebtn_b" class="togglebtn0">＋</button><span id="togglespn_b" class="middle"> ： 使い方</span></p>
 		<div id="manual" class="manual">
-			<h3>１分でわかる基本操作</h3>
+			<h3>１秒でわかる基本操作</h3>
+			<br>
+			<p>　とにかく　使えばわかる！</p>
+			<br>
 		</div>
 
 	</div><!--/marticle-->
