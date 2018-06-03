@@ -11,19 +11,8 @@ $file_name = $param['filename'];
 
 $data=json_encode(
 	array(
-		 "id"				=>$param['id'],
-		 "thread"		=>$param['thread'],
-//		 "person_no"=>$param['person_no'],
-		 "title"		=>$param['title'],
-		 "decision"	=>$param['decision'],
-		 "month"		=>$param['month'],
-		 "persn"		=>$param['persn'],
-		 "days"			=>$param['days'],
-		 "weeks"		=>$param['weeks'],
-		 "color"		=>$param['color'],
-		 "avail"		=>$param['avail'],
-		 "marks"		=>$param['marks'],
-		 "notes"		=>$param['notes'],
+		 "id"	=>$param['id'],
+		 "thread"=>$param['thread']
 	)
 );
 

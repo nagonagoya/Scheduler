@@ -1,69 +1,71 @@
-<?php
-include( "scrape_func.php" );//■外部関数の取り込み←HTMLを加工抽出する関数郡
-////////////////////////////////////////////////////////////////////////
-$pass_id 	= ( isset($_GET['i']) ) ? $_GET['i'] : exit("IDの指定がありません");				//幹事ＩＤ
-$thread_no 	= ( isset($_GET['t']) ) ? $_GET['t'] : exit("スレッド番号の指定がありません");		//スレッド番号
-$person_no 	= ( isset($_GET['p']) ) ? $_GET['p'] : exit("招待者番号の指定がありません");		//自分の招待者番号:0,1,2,…
-//////////////////////////////////////////////////////////////////////////
-//$title		= "飲み会しようぜ";									//スレッドのタイトル
-//$decision	= 999;												//日程決定 days[]のkey値(0,1,2,…):決定, 999:未決定
-//$month		= 4;												//開始月
-//$persn		= array("Ａ氏","Ｂ氏","Ｃ氏","Ｄ氏");					//招待者名
-//$days		= array(27,28,29,30, 1, 2, 3, 4, 5, 6, 7);			//日付
-//$weeks		= array( 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0);			//曜日     0: Sun .... 6: Sat
-//$color		= array( 0, 0, 1, 2, 0, 0, 2, 2, 2, 2, 0);			//曜日色   0:平日(黒), 1;土曜(青), 2:日曜or祝日(赤)
-//$avail		= array( 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1);			//入力可否 0:不可, 1:可能
-//$marks		= array(											//招待者が日付に付けたマーク
-//				array( 2, 2, 1, 0, 0, 0, 2, 1, 2, 2, 2),		//Ａ氏の入力 0:×, 1;△, 2:〇 3:全角空白
-//				array( 0, 2, 0, 1, 0, 0, 2, 2, 0, 2, 2),		//Ｂ氏の入力 0:×, 1;△, 2:〇 3:全角空白
-//				array( 0, 2, 2, 2, 0, 0, 0, 2, 2, 2, 2),		//Ｃ氏の入力 0:×, 1;△, 2:〇 3:全角空白
-//				array( 1, 0, 2, 2, 0, 0, 2, 1, 2, 2, 1)			//Ｄ氏の入力 0:×, 1;△, 2:〇 3:全角空白
-//			  );
-//$notes		= array(												//招待者が日付に付けたコメント
-//				array("","","","","","","","","","","この日がいい"),
-//				array("","","","翌朝早い早いから途中棄権するわ","","","","","","",""),
-//				array("","","","","","","","","","",""),
-//				array("できればパス","","","","","","","８時からならＯＫ","","","")
-//			  );
-//●●●●まだ必要な設定：
-//・チャットに関するデータ（可変長データ、配信者：コメント））
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<META charset="UTF-8">
+	<TITLE>日程決め～る</TITLE>
+	<link href="css/index.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="favicon/f01.ico">
+</head>
 
-//----------------------------------------------------------------------//
-//■エスケープ処理（安全にパラメータを渡すために特殊文字を HTML エンティティに変換する）
-//----------------------------------------------------------------------//
-function h($s) {
-	return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
-}
+<body>
 
-//■■■JSON読込み■■■
-//echo "JSONファイル読込開始<br>";
-$json = file_get_contents("data".$pass_id.$thread_no);
-if($json){
-	//JSONファイル読込み成功した場合
-	//echo "ファイル読込み成功：パース開始<br>";
-	$data = json_decode($json, true);//JSONから連想配列に戻す
-//	$pass_id	= $data['pass_id'];
-//	$thread_no	= $data['thread_no'];
-//	$person_no	= $data['person_no'];
-	$title		= $data['title'];
-	$decision	= $data['decision'];
-	$month		= $data['month'];
-	$persn		= $data['persn'];
-	$days		= $data['days'];
-	$weeks		= $data['weeks'];
-	$color		= $data['color'];
-	$avail		= $data['avail'];
-	$marks		= $data['marks'];
-	$notes		= $data['notes'];
-	$mark		= $data['mark'];
+<!--■■■my_body(container) BEGIN■■■-->
+	<div id="my_body">
 
-	if($pass_id===NULL){ echo "JSONパース失敗<br>"; return; }
-	$flag["file_now"] = true;	// ファイル有り
-} else {
-	//ファイル無しor読込み失敗した場合
-	$flag["file_now"] = false;	// ファイル無し
-	exit( "ファイル無しor読込み失敗:強制終了");
-}
+<!--■■■header BEGIN■■■-->
+	<div id="my_header">
+		<p><button id="title" class="title" > SiteName</button>　<span class="ym">日程決め～る</span></p>
+	</div><!--/my_header-->
+<!--■■■header END■■■-->
 
-include_once('html/html01.php');
-?>
+<!--■■■nav BEGIN■■■-->
+<!--■■■nav END   ■■■-->
+
+<!--■■■article BEGIN■■■-->
+	<div id="my_article">
+	<div id="myarticle">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<p>ようこそ　日程決め～るへ</p>
+		<br>
+		<br>
+		<p>仲間をさそってイベントの予定をサクっと決めちゃいましょう</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<p><button id="btn_start" class="btn_start" onclick="location.href='p1.php'">スケジュールをつくる</button></p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<p>　</p>
+	</div><!--/marticle-->
+	</div><!--/my_article-->
+<!--■■■article END   ■■■-->
+
+<!--■■■footer BEGIN■■■-->
+	<div id="my_footer">
+		<p class="middle">※ Javascriptを有効にしてご利用下さい。</p>
+	</div><!--/my_footer-->
+<!--■■■footer END    ■■■-->
+
+	</div><!--/my_body-->
+<!--■■■my_body(container) END    ■■■-->
+
+</body>
+</html>
