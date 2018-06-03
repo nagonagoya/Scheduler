@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<META charset="UTF-8">
+	<TITLE>日程決め～る</TITLE>
+	<link rel="shortcut icon" href="favicon/f01.ico">
+	<link type="text/css" rel="stylesheet" href="css/p2.css">
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" /><!--JQuaryCSS読み込み-->
+</head>
+
+<body>
+<!--■■■my_body(container) BEGIN■■■-->
+	<div id="my_body">
+
+<!--■■■header BEGIN■■■-->
+	<div id="my_header">
+		<p><button id="title" class="title" onclick="location.href='.'"> SiteName</button>　　<span class="ym"><?php echo $title; ?></span></p>
+	</div><!--/my_header-->
+	<!--■■■header END■■■-->
+
+<!--■■■nav BEGIN■■■-->
+<!--■■■nav END   ■■■-->
+
+<!--■■■article BEGIN■■■-->
+	<div id="my_article">
+	<div id="myarticle">
+
+		<table >
+			<tbody id="table1"></tbody>
+		</table><!--/table table-condensed-->
+
+		<br>
+		<p><button id="togglebtn_b" class="togglebtn0">＋</button><span id="togglespn_b" class="middle"> ： 使い方</span></p>
+		<div id="manual" class="manual">
+			<h3>１秒でわかる基本操作</h3>
+			<br>
+			<p>　とにかく　使えばわかる！</p>
+			<br>
+		</div>
+
+	</div><!--/marticle-->
+	</div><!--/my_article-->
+<!--■■■article END   ■■■-->
+
+<!--■■■footer BEGIN■■■-->
+	<div id="my_footer">
+		<p class="middle">※ Javascriptを有効にしてご利用下さい。</p>
+	</div><!--/my_footer-->
+<!--■■■footer END    ■■■-->
+
+	</div><!--/my_body-->
+<!--■■■my_body(container) END    ■■■-->
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script><!--JQuary読み込み-->
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script><!--JQuary読み込み-->
+	<script src="js/jquery.balloon.js"></script><!--バルーン表示ライブラリ-->
+	<script>
+		//■■■■■Javascript・BEGIN▼▼▼▼▼
+		//■■■■■初期設定・BEGIN▼▼▼▼▼
+		var week 		= new Array("日","月","火","水","木","金","土");
+		var mark		= new Array("×", "△", "〇","　");	//マークの記号
+		var id			= <?php echo $id; ?>;  						//幹事ＩＤ
+		var thread	= <?php echo $thread; ?>;  				//スレッド番号
+		var person_no	= <?php echo $person_no; ?>;  	//自分の招待者番号
+		var title		= "<?php echo $title; ?>";				//スレッドのタイトル
+		var decision	= <?php echo $decision; ?>;			//日程決定 days[]のkey値(0,1,2,…):決定, 999:未決定
+		var month		= <?php echo $month; ?>;					//開始月
+		var persn		= JSON.parse('<?=json_encode($persn );?>');	//招待者名
+		var days		= JSON.parse('<?=json_encode($days  );?>');	//日付
+		var weeks		= JSON.parse('<?=json_encode($weeks );?>');	//曜日     0: Sun .... 6: Sat
+		var color		= JSON.parse('<?=json_encode($color );?>');	//曜日色   0:平日(黒), 1;土曜(青), 2:日曜or祝日(赤)
+		var avail		= JSON.parse('<?=json_encode($avail );?>');	//入力可否 0:不可, 1:可能
+		var marks		= JSON.parse('<?=json_encode($marks );?>');	//招待者が日付に付けたマーク
+		var notes		= JSON.parse('<?=json_encode($notes );?>');	//招待者が日付に付けたコメント
+		var flag_text_error = false		//コメント入力に問題があった場合：true、問題ない場合：false
+
+		console.log("psaa_id	: "+id	);
+		console.log("thread		: "+thread);
+		console.log("person_no: "+person_no);
+		console.log("title		: "+title	);
+		console.log("decision	: "+decision);
+		console.log("month		: "+month	);
+		console.log("person		: "+persn	);
+		console.log("days			: "+days	);
+		console.log("week			: "+weeks	);
+		console.log("color		: "+color	);
+		console.log("avail		: "+avail	);
+		console.log("marks		: "+marks	);
+		console.log("notes		: "+notes	);
+		console.log("mark			: "+mark	);
+
+		//■■■■■初期設定・END  ▲▲▲▲▲
+		//■■■■■Javascript・END  ▲▲▲▲▲
+	</script>
+	<script src="js/p2.js"></script><!--自作JS-->
+
+</body>
+</html>

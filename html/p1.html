@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<META charset="UTF-8">
+	<TITLE>イベントの設定</TITLE>
+	<link rel="shortcut icon" href="favicon/f01.ico">
+	<link type="text/css" rel="stylesheet" href="css/p1.css">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" ><!--JQuaryCSS読み込み-->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" ><!--JQuaryCSS読み込み-->
+</head>
+
+<body>
+
+<!--■■■my_body(container) BEGIN■■■-->
+	<div id="my_body">
+
+<!--■■■header BEGIN■■■-->
+	<div id="my_header">
+		<p><button id="title" class="title" onclick="location.href='.'">SiteName</button>　　<span class="ym">イベントの設定</span></p>
+	</div><!--/my_header-->
+<!--■■■header END  ■■■-->
+
+<!--■■■nav BEGIN■■■-->
+	<div id="my_nav">
+		<div id="mynav">
+			<ul>
+				<li class="btn"i><button id="btn_save"   class="m">登　　録</button></li>
+			</ul>
+		</div><!--/mynav-->
+	</div><!--/my_nav-->
+<!--■■■nav END  ■■■-->
+
+<!--■■■article BEGIN■■■-->
+	<div id="my_article">
+		<div id="myarticle">
+
+			<p>　</p>
+			<p style="text-align:auto;">
+				<h4> 管理画面は以下のアドレスへアクセスしてください</h4>
+				<tbody>
+					<tr>
+						<td>　　</td>
+						<td><div>　　　<?php echo $url_kanri ?></div></td>
+					</tr>
+				</tbody>
+			</p>
+			<br>　
+
+			<p id="settings_title" style="text-align:auto;">
+				<h4>イベントのタイトル</h4>
+				<tbody>
+					<tr>
+						<td>　　</td>
+						<td><input type="text" id="event_title" class="togglebtn0" style="width:500px; text-align:auto;"></td>
+					</tr>
+				</tbody>
+			</p>
+			<br>　
+
+			<p id="settings_term" style="text-align:auto;">
+				<h4>イベントの期間</h4>
+					<br>
+					<tbody>
+						<tr>
+							<td>　　</td>
+							<td><input type="text" id="datepicker1" class="togglebtn0" style="width:100px; text-align:auto;"></td>
+							<td>　〜　</td>
+							<td><input type="text" id="datepicker2" class="togglebtn0" style="width:100px; text-align:auto;"></td>
+						</tr>
+					</tbody>
+			</p>
+			<br>　
+
+			<p id="settings_text" style="text-align:auto;">
+				<h4>案内文</h4>
+					<tbody>
+						<tr>
+							<td>　　</td>
+							<td><textarea id="event_text" class="togglebtn0" cols="50" rows="5" style="width:500px; text-align:left;"></textarea></td>
+						</tr>
+					</tbody>
+			</p>
+			<br>　
+
+			<p id="settings_user">
+				<h4>招待する人の名前とメールアドレス</h4>
+				<table>
+					<thead>
+						<tr>
+							<td>削除</td><td>No.</td><td>招待者</td><td>メアド</td><td>URL</td>
+						</tr>
+					</thead>
+					<tbody id="settings_user_body">
+					</tbody>
+				</table>
+				<p>※招待者名は先頭２文字のみ表示されます。記号は入力できません。</p><br><br><br>
+			</p>
+			<br>
+			<br>
+			</p>
+		</div><!--/marticle-->
+	</div><!--/my_article-->
+<!--■■■article END  ■■■-->
+
+<!--■■■footer BEGIN■■■-->
+	<div id="my_footer">
+		<p class="middle">※ Javascriptを有効にしてご利用下さい。</p>
+	</div><!--/my_footer-->
+<!--■■■footer END  ■■■-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!--JQuary読み込み-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script><!--JQuary読み込み-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script><!--JQuary読み込み-->
+	<script src="js/jquery.balloon.js"></script><!--バルーン表示ライブラリ-->
+	<script>
+		//■■■■■Javascript・BEGIN▼▼▼▼▼
+		//■■■■■初期設定・BEGIN▼▼▼▼▼
+		var week			= new Array("日","月","火","水","木","金","土");	//曜日名
+		var mark			= new Array("×", "△", "〇","　");							//マークの記号
+		var id 				= <?php echo $id; ?>;													//管理者id的な位置づけ
+		var thread		= <?php echo $thread; ?>;											//スレッド番号
+		var person		= JSON.parse('<?=json_encode($person);?>');		//招待者名
+		var mailadd 	= JSON.parse('<?=json_encode($mailadd);?>');	//メールアドレス
+		var url_user	= "<?php echo $url_user; ?>";									//招待者向けページ
+		var url_kanri	= "<?php echo $url_kanri; ?>";								//管理者向けページ
+		//■表示時に使用する一時変数
+		var user_prsn	= new Array();																//招待者の配列「person」のコピー
+		var user_mail	= new Array();																//招待者の配列「mailadd」のコピー
+		var user_del	= new Array();																//削除対象の配列
+		// console.log("id: "+id+"     ,thread: "+thread);
+		// console.log("person:1: "+person);
+		//■■■■■初期設定・END  ▲▲▲▲▲
+		//■■■■■Javascript・END  ▲▲▲▲▲
+	</script><!--p1.jsへのデータ受け渡し-->
+	<script src="js/p1.js"></script><!--自作js-->
+
+	</div><!--/my_body-->
+<!--■■■my_body(container) END  ■■■-->
+
+</body>
+</html>

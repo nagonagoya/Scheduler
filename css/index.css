@@ -1,0 +1,394 @@
+*{margin:0; padding:0;}
+body{background-color:#fff;width:100%;}
+
+#my_body{margin:0 auto; width:700px;border-left:1px solid #fff;border-right:1px solid #fff;}
+#my_header{width:100%;border-bottom:1px solid #aaa;background-color:#fff; height:50px;}
+#my_nav {float:left; width:150px;background-color:#fff;font-size: 0.8em;color:#666}
+#my_article {/*float:left;*/text-align:center;  width:100%;background-color:#fff;}
+#mynav{padding:1em 0 2em 1em;}
+#myarticle{padding:1em;text-align:center;border-left:1px solid #fff;  vertical-align:middle;  height: 680px;  vertical-align:middle;}
+#my_footer{width:100%;clear:both;background-color:#fff;border-top:1px solid #aaa;color:#777;font-size:0.8em;text-align:center;padding:1em 0;}
+
+/*マニュアルの設定*/
+.manual{
+/*	font-size: 0.8em;*/
+	line-height:175%;
+	color: #555;
+	margin:1em;
+}
+.manual p{
+	font-size: 1em;
+	line-height:175%;
+	color: #555;
+	margin:1em 0;
+}
+.manual h3{
+	font-size: 1.1em;
+	font-weight: normal;
+	line-height:175%;
+	color: #fff;
+	margin:1em 0;
+	padding: 5px;
+	border: 0px solid #888;
+	border-radius:5px;
+	background: #888;
+	text-align :center;
+}
+.manual b.subtitle1{
+	font-size: 1.1em;
+	line-height:175%;
+	color: #222;
+	margin:1em 0;
+}
+/*ボタンのリスト*/
+li.btn {list-style:none;}
+/*ヘッダーのフォント*/
+#my_header .title{cursor:pointer;background:#fff;border-style: none;font-size:20px;color: #aaa; margin-left:35px;line-height: 50px;}
+#my_header .title:hover{color: #6bf;}
+#my_header .ym{font-size:20px;font-weight:bold;color: #555;margin-left:70px; padding-left:30px;line-height: 50px; border: 1px solid #bbb;border-radius:5px;padding:5px 100px}
+
+
+td , span.fB0, span.fB1, span.chT, span.ch0, span.ch1, span.ch2 {
+	padding: 5px;
+	border: 1px solid #fff;
+	border-radius:5px;
+	background: #fff;
+	text-align :center;
+	overflow:hidden;
+}
+
+/*マニュアル内の休日＆出勤セル*/
+span.fB0, span.fB1, span.chT, span.ch0, span.ch1, span.ch2 {
+	display:inline-block;
+	padding: 2px 5px 5px 5px;
+	margin: 0px 2px 0px 2px;
+	width: 65px;
+	height: 1.4em;
+}
+
+
+/*テーブル：チェック項目*/
+td.chT, span.chT {/*チェック項目タイトル*/
+	background: #c8c8c8;
+}
+td.chA0 {/*チェック欄　直前月*/ /*      未使用！     */
+	background: #ddb;
+}
+td.ch0, span.ch0,td.ch1, span.ch1,td.ch2, span.ch2 {/*チェック欄　注目月：共通*/
+	width: 25px;
+}
+td.ch0, span.ch0 {/*チェック欄　注目月：問題なし*/
+	background: #ddd;
+}
+td.ch1, span.ch1 {/*チェック欄　注目月：警告ーレッド*/
+	background: #f88;
+}
+td.ch2, span.ch2 {/*チェック欄　注目月：注意ーオレンジ*/
+	background: #fc6;
+}
+
+
+/*テーブル：直前月　勤務シフト*/
+td.fA0 {/*出勤*/
+	background: #f0f0f0;
+}
+td.fA0:hover {
+	cursor:pointer;
+	background: #e0e0e0;
+	border: 1px solid #6bf;
+}
+td.fA1 {/*休日*/
+	background: #78a8e8;
+}
+td.fA1:hover {
+	cursor:pointer;
+	background: #6898d8;
+	border: 1px solid #6bf;
+}
+
+
+/*テーブル：注目月　勤務シフト*/
+td.fB0 , span.fB0 {/*出勤*/
+	background: #f0f0f0;
+}
+td.fB0:hover {
+	cursor:pointer;
+	background: #e0e0e0;
+	border: 1px solid #6bf;
+}
+td.fB1, span.fB1 {/*休日*/
+	background: #78a8e8;
+}
+td.fB1:hover {
+	cursor:pointer;
+	background: #6898d8;
+	border: 1px solid #6bf;
+}
+/*テーブル：直前月連休者*/
+td.fC0 {/*連休なし*/
+	background: #d8d8d8;
+}
+td.fC0:hover {
+	cursor:pointer;
+	background: #c8c8c8;
+	border: 1px solid #6bf;
+}
+td.fC1 {/*連休あり*/
+	background: #7ae;
+}
+td.fC1:hover {
+	cursor:pointer;
+	background: #69d;
+	border: 1px solid #6bf;
+}
+
+/*従業員名：共通*/
+td.person_normal,td.person_leader {
+	width: 25px;
+}
+
+/*従業員名：通常従業員*/
+td.person_normal {
+	background: #ddd;
+}
+td.person_normal:hover {
+	cursor:pointer;
+	background: #ccc;
+	border: 1px solid #6bf;
+}
+
+/*従業員名：リーダー*/
+td.person_leader {
+	background: #aaa;
+}
+td.person_leader:hover {
+	cursor:pointer;
+	background: #999;
+	border: 1px solid #6bf;
+}
+
+/*日付＆曜日欄*/
+td.youbiC {/*前月連休タイトル*/
+	background: #f0f0f0;
+}
+td.youbiD {/*当月タイトル*/
+	background: #f0f0f0;
+}
+
+td.youbiA0,td.youbiA1,td.youbiA2,td.youbiB0,td.youbiB1,td.youbiB2 {/*共通*/
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+	background: #fafafa;
+	width: 25px;
+}
+
+td.youbiA0 {/*平日*/
+	color: #666;
+}
+td.youbiA1 {/*土曜日*/
+	color: #558db7;
+}
+td.youbiA2 {/*日曜日*/
+	color: #ca6282;
+}
+
+td.youbiB0 {/*平日*/
+	color: #666;
+}
+td.youbiB1 {/*土曜日*/
+	color: #558db7;
+}
+td.youbiB2 {/*日曜日*/
+	color: #ca6282;
+}
+
+
+
+
+/*スケジュールを作るボタン*/
+.btn_start {/*スタート*/
+	vertical-align:middle;
+	margin: 100px auto;
+/*	margin-right:auto;	 */
+	cursor:pointer;
+/*	width: 30px;	*/
+	padding: 5px 5px;
+	margin: 0px 3px 3px 3px;
+	background:#fff;
+	border-radius:2px;
+	color: #777;
+	text-align :center;
+	font-weight: bold;
+	border: 1px solid #ccc;
+}
+.btn_start:hover {
+	background:#eee;
+	border: 1px solid #6bf;
+	color: #555;
+}
+
+
+
+
+/*先月21日以前テーブル表示用＆使い方用トグルボタン*/
+.togglebtn0 {/*問題：なしグリーン*/
+	cursor:pointer;
+	width: 30px;	
+	padding: 5px 5px;
+	margin: 0px 3px 3px 3px;
+	background:#fff;
+	border-radius:2px;
+	color: #777;
+	text-align :center;
+	font-weight: bold;
+	border: 1px solid #ccc;
+}
+.togglebtn0:hover {
+	background:#eee;
+	border: 1px solid #6bf;
+	color: #555;
+}
+.togglebtn2 {/*問題：注意オレンジ*/
+	cursor:pointer;
+	width: 30px;
+	padding: 5px 5px;
+	margin: 0px 3px 3px 3px;
+	background:#fc6;
+	border-radius:2px;
+	color: #777;
+	text-align :center;
+	font-weight: bold;
+	border: 1px solid #ccc;
+}
+.togglebtn2:hover {
+	background:#eb5;
+	border: 1px solid #6bf;
+	color: #555;
+}
+.togglebtn1 {/*問題：警告レッド*/
+	cursor:pointer;
+	width: 30px;
+	padding: 5px 5px;
+	margin: 0px 3px 3px 3px;
+	background:#f88;
+	border-radius:2px;
+	color: #777;
+	text-align :center;
+	font-weight: bold;
+	border: 1px solid #ccc;
+}
+.togglebtn1:hover {
+	background:#e77;
+	border: 1px solid #6bf;
+	color: #555;
+}
+
+
+button.s {
+	cursor:pointer;
+	width: 58px;
+	padding: 10px 5px;
+	margin: 0px 4px 5px 0px;
+	background:#fff;
+	border: 1px solid #aaa;
+	border-radius:5px;
+	color : #555;
+	text-align :center;
+}
+button.s:hover {
+	background-color: #eee;
+	border: 1px solid  #6bf;
+	color: #444;
+}
+button.s:active {
+	background-color: #ddd;
+	border: 1px solid  #6bf;
+	color: #333;
+}
+
+button.m {
+	cursor:pointer;
+	width: 120px;
+	padding: 10px 5px;
+	margin: 0px 0px 5px 0px;
+	background:#fff;
+	border: 1px solid #aaa;
+	border-radius:5px;
+	color : #555;
+/*	font-weight: bold;*/
+	text-align :center;
+}
+button.m:hover {
+	background-color: #eee;
+	border: 1px solid  #6bf;
+	color: #444;
+}
+button.m:active {
+	background-color: #ddd;
+	border: 1px solid  #6bf;
+	color: #333;
+}
+
+button.test01{
+		cursor:pointer;
+    /* 文字サイズを1.4emに指定 */
+    font-size: 1em;
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 5px 10px;
+    /* 背景色を濃い青色に指定 */
+    background-color: #248;
+    /* 文字色を白色に指定 */
+    color: #fff;
+    /* ボーダーをなくす */
+    border-style: none;
+}
+
+button.test01:hover{
+	    /* 背景色を明るい青色に指定 */
+    background-color: #24d;
+    /* 文字色を白色に指定 */
+    color: #fff;
+}
+
+
+
+/*トースト表示*/
+#toast-cont{
+    text-align:center;
+    position: fixed;
+    top: 50%;
+    width:100%;
+}
+#toast{
+    display: inline-block;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
+    z-index: 100;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    font-size:16px;
+}
+
+/*テキスト　ファイル有無など*/
+.small{
+	font-size:9px;
+	color: #666;
+}
+/*テキスト　ファイル有無などの枠付き*/
+.small-border{
+	font-size:9px;
+	color: #fff;
+	padding: 2px 10px 2px 10px;
+	background: #666;
+	border-radius: 2px;
+}
+/*テキスト　トグルボタンの案内など*/
+.middle{
+	font-size:15px;
+	color: #666;
+}
