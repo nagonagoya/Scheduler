@@ -2,10 +2,10 @@
 //include( "scrape_func.php" );//■外部関数の取り込み←HTMLを加工抽出する関数郡
 
 //■get送信データ取得
-$id 				= ( isset($_GET['i']) ) ? $_GET['i'] : exit("IDの指定がありません");				//幹事ＩＤ
+$id 				= ( isset($_GET['i']) ) ? $_GET['i'] : exit("IDの指定がありません");						//幹事ＩＤ
 $thread 		= ( isset($_GET['t']) ) ? $_GET['t'] : exit("スレッド番号の指定がありません");		//スレッド番号
 $person_no 	= ( isset($_GET['p']) ) ? $_GET['p'] : exit("招待者番号の指定がありません");		//自分の招待者番号:0,1,2,…
-
+if ($person_no <> 999 ){ exit("招待者番号が違います");}		//999=管理者番号
 //■エスケープ処理（安全にパラメータを渡すために特殊文字を HTML エンティティに変換する）
 function h($s) {
 	return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
@@ -41,5 +41,5 @@ if($json){
 	exit( "ファイル無しor読込み失敗:強制終了");
 }
 
-include_once('html/p2.html');
+include_once('html/p3.html');
 ?>

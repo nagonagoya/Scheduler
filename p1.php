@@ -22,7 +22,7 @@ $url_index = $_SERVER['HTTP_HOST'].str_replace(basename($_SERVER["REQUEST_URI"])
 //招待者用入力ページのURL（設定ページで登録したあとに有効になる招待者向けページのベースURL）
 $url_user  = $url_index."p2.php?";
 //管理者用管理ページのURL（設定ページで登録したあとに有効になる管理者向けページURL）
-$url_kanri = $url_index."p3.php?i=".$id."&t=".$thread;
+$url_kanri = $url_index."p3.php?i=".$id."&t=".$thread."&p=999";
 
 include_once('html/p1.html');
 ?>
