@@ -85,42 +85,30 @@ td.ch2, span.ch2 {/*チェック欄　注目月：注意ーオレンジ*/
 }
 
 
-/*テーブル：マーク（日程決定日）*/
+/*テーブル：マーク（日程決定日　決定日）*/
 td.fA0 {/*×*/
 	background: #f00880;
-}
-td.fA0:hover {
-	cursor:pointer;
-	background: #e07070;
-	border: 1px solid #6bf;
+	border: 1px solid #ffb000;
+	color: #ffffff;
 }
 td.fA1 {/*△*/
-	background: #f0c060;
-}
-td.fA1:hover {
-	cursor:pointer;
-	background: #e0c050;
-	border: 1px solid #6bf;
+	background: #ffbf00;
+	border: 1px solid #ffb000;
+	color: #ffffff;
 }
 td.fA2 {/*〇*/
 	background: #78a8e8;
-}
-td.fA2:hover {
-	cursor:pointer;
-	background: #6898d8;
-	border: 1px solid #6bf;
+	border: 1px solid #ffb000;
+	color: #ffffff;
 }
 td.fA3 {/*空白（未設定）*/
 	background: #f0f0f0;
-}
-td.fA3:hover {
-	cursor:pointer;
-	background: #ffffff;
-	border: 1px solid #6bf;
+	border: 1px solid #ffb000;
+	color: #ffffff;
 }
 
 
-/*テーブル：マーク（日程決定日以外　自分以外）*/
+/*テーブル：マーク（日程未決定　自分以外　または　日程決定日　決定日以外）*/
 td.fB0 {/*×*/
 	background: #ff8989;
 	font-weight: bold;
@@ -144,7 +132,7 @@ td.fB3 {/*空白（未設定）*/
 
 
 
-/*テーブル：マーク（日程決定日以外 自分）*/
+/*テーブル：マーク（日程未決定 自分）*/
 td.fC0 {/*×*/
 	background: #ff8989;
 	border: 1px solid #df6969;
@@ -258,19 +246,19 @@ td.youbiA0 {/*平日（日程決定日）*/
 	font-weight: bold;
 	color: #666;
 	border-bottom: 1px solid #ccc;
-	background: #fafafa;
+	background: #ffb000;
 }
 td.youbiA1 {/*土曜日（日程決定日）*/
 	font-weight: bold;
 	color: #558db7;
 	border-bottom: 1px solid #ccc;
-	background: #fafafa;
+	background: #ffb000;
 }
 td.youbiA2 {/*日祝日（日程決定日）*/
 	font-weight: bold;
 	color: #ca6282;
 	border-bottom: 1px solid #ccc;
-	background: #fafafa;
+	background: #ffb000;
 }
 
 td.youbiB0 {/*平日（日程決定日以外）*/
@@ -454,4 +442,31 @@ button.test01:hover{
 .middle{
 	font-size:15px;
 	color: #666;
+}
+
+/*決定ボタン関連*/
+td.decision_title0 {/*タイトル：未決定*/
+	background: #d0d0d0;
+}
+td.decision_title1 {/*タイトル：決定*/
+	background: #ffb000;
+}
+td.decision0 {/*未決定*/
+	background: #f0f0f0;
+}
+td.decision0:hover {
+	cursor:pointer;
+	background: #e0e0e0;
+	border: 1px solid #6bf;
+}
+td.decision1 {/*◎決定*/
+	background: #ffb000;
+}
+td.decision1:hover {
+	cursor:pointer;
+	background: #efa000;
+	border: 1px solid #6bf;
+}
+td.decision2 {/*対象外、変更不可状態*/
+	background: #ffb000;
 }
