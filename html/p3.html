@@ -63,7 +63,7 @@
 		var thread	= <?php echo $thread; ?>;  				//スレッド番号
 		var person_no	= <?php echo $person_no; ?>;  	//自分の招待者番号
 		var title		= "<?php echo $title; ?>";				//スレッドのタイトル
-		var text		= "<?php echo $text; ?>";					//スレッドのタイトル
+		var text		= "<?php echo $text; ?>".replace(/<br>/g,'\n');					//スレッドのタイトル
 		var decision	= <?php echo $decision; ?>;			//日程決定 days[]のkey値(0,1,2,…):決定, 999:未決定
 		var month		= <?php echo $month; ?>;					//開始月
 		var persn		= JSON.parse('<?=json_encode($persn );?>');	//招待者名
@@ -94,7 +94,7 @@
 		//■■■■■初期設定・END  ▲▲▲▲▲
 		//■■■■■Javascript・END  ▲▲▲▲▲
 	</script>
-	<script src="js/p2.js"></script><!--自作JS-->
+	<script src="js/p3.js"></script><!--自作JS-->
 
 </body>
 </html>
