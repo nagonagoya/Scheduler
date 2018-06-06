@@ -5,31 +5,31 @@
 <input type="submit" value="書き込む">
 </form>
 
-<?php 
+<?php
 
-$id 				= ( isset($_GET['i']) ) ? $_GET['i'] : exit("IDの指定がありません");				//幹事ＩＤ
-$thread 		= ( isset($_GET['t']) ) ? $_GET['t'] : exit("スレッド番号の指定がありません");		//スレッド番号
-$person_no 	= ( isset($_GET['p']) ) ? $_GET['p'] : exit("招待者番号の指定がありません");		//自分の招待者番号:0,1,2,…
+//$id 				= ( isset($_GET['i']) ) ? $_GET['i'] : exit("IDの指定がありません");				//幹事ＩＤ
+//$thread 		= ( isset($_GET['t']) ) ? $_GET['t'] : exit("スレッド番号の指定がありません");		//スレッド番号
+//$person_no 	= ( isset($_GET['p']) ) ? $_GET['p'] : exit("招待者番号の指定がありません");		//自分の招待者番号:0,1,2,…
 
-$persn		= $data['persn'];
+//$persn		= $data['persn'];
 
 $chatdata = 'chat'.$id.$thread.'.txt';
 
 if($chatdata != null){
-	$fp=@fopen("./text/chat".$id.$thread.".txt","a");
+	$fp=@fopen("./data/chat".$id.$thread.".txt","a");
 }
 
 if(!empty($_POST["body"])){
     $body=$_POST["body"];
     $body=$persn[$person_no].":".$body."\n";
-    $fp=@fopen("./text/chat".$id.$thread.".txt","a");
+    $fp=@fopen("./data/chat".$id.$thread.".txt","a");
     flock($fp,LOCK_EX);
     fputs($fp,$body);
     fclose($fp);
     header("Location: {$_SERVER['REQUEST_URI']}");
 }
 
-$chatdata=file("./text/chat".$id.$thread.".txt");
+$chatdata=file("./data/chat".$id.$thread.".txt");
 
 for($i=0;$i<count($chatdata);$i++){
     echo($chatdata[$i]."<br />");
