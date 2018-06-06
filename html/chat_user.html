@@ -2,10 +2,13 @@
 <dl>
 <dd><textarea id="body" name="body" cols="50" rows="10" maxlength="100"></textarea></dd>
 </dl>
+<br>
 <input type="submit" value="書き込む">
+<br/>
+<br />
 </form>
 
-<?php
+<?php 
 
 //$id 				= ( isset($_GET['i']) ) ? $_GET['i'] : exit("IDの指定がありません");				//幹事ＩＤ
 //$thread 		= ( isset($_GET['t']) ) ? $_GET['t'] : exit("スレッド番号の指定がありません");		//スレッド番号
@@ -21,7 +24,7 @@ if($chatdata != null){
 
 if(!empty($_POST["body"])){
     $body=$_POST["body"];
-    $body=$persn[$person_no].":".$body."\n";
+    $body="<b>".$persn[$person_no]."</b>".":"."　".$body."\n"."<hr size='1' color='black'/>";
     $fp=@fopen("./data/chat".$id.$thread.".txt","a");
     flock($fp,LOCK_EX);
     fputs($fp,$body);
@@ -36,3 +39,4 @@ for($i=0;$i<count($chatdata);$i++){
 }
 
 ?>
+
